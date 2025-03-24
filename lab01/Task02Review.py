@@ -6,30 +6,30 @@ File55. Дана строка S0, целое число N (≤ 4) и N файл�
 """
 
 
-def create_test_file(filename: str, data):
+def create_test_file(filename: str, data) -> None:
     with open(filename, "wb") as f:
         f.writelines(data)
 
 
-def read_binary_file(filename: str):
+def read_binary_file(filename: str) -> list:
     with open(filename, "rb") as f:
         return f.readlines()
 
 
-def sozdati(S0, a):
+def sozdati(S0: str, a: int) -> None:
     b = a + 1
     for i in range(1, b):
         mas = [
             b"1\n", b"2\n", b"3\n",
             b"4\n", b"5\n", b"6\n",
             b"7\n", b"8\n", b"9\n",
-            b"10\n",
+            b"10\n"
         ]
         nazw = S0 + str(i) + ".bin"
         create_test_file(filename=nazw, data=mas)
 
 
-def otw(S0, a):
+def otw(S0: str, a: int) -> None:
     b = a + 1
     m = []
     file_sizes = []
@@ -50,7 +50,7 @@ def otw(S0, a):
         create_test_file(filename=nazw, data=zap)
 
 
-if __name__ == "__main__":
+def main():
     S0 = str(input("Введите строку S0: "))
     try:
         a = int(input("Введите число исходных файлов: "))
@@ -58,3 +58,7 @@ if __name__ == "__main__":
         otw(S0=S0, a=a)
     except ValueError as e:
         print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()
