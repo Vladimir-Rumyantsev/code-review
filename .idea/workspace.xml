@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbe2c7be-f47f-480a-b45f-7e19db83d58d" name="Changes" comment="Semi-finished work">
+    <list default="true" id="fbe2c7be-f47f-480a-b45f-7e19db83d58d" name="Changes" comment="Semi-finished work 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab01/Task01Review.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab01/Task01Review.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab01/Task02Review.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab01/Task02Review.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab01/Task04Review.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab01/Task04Review.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +27,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Task02Review.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Task02Review" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="codeReview" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab01" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab01/Task02Review.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Task02Review" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -63,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742797152570</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Semi-finished work 2">
+      <option name="closed" value="true" />
+      <created>1742798258793</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742798258793</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -80,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lab01 initial assignment" />
     <MESSAGE value="Semi-finished work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Semi-finished work" />
+    <MESSAGE value="Semi-finished work 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Semi-finished work 2" />
   </component>
 </project>

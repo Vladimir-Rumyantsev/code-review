@@ -1,13 +1,16 @@
-# программа считывает данные об N учениках и записывает их в бинарный файл
-# ввод: N (число записей), затем сведения об N учениках (Фамилия, Имя, Класс, Скорость чтения (int, 1 кл.) /
-# Баллы за контрольную по математике (от 1 до 10, float, 2-3 кл.) /
-# Баллы за итоговую аттестацию (от 1 до 100, float, 4 кл.))
-# вывод: содержимое файла в виде таблицы
+"""
+программа считывает данные об N учениках и записывает их в бинарный файл
+ввод: N (число записей), затем сведения об N учениках (Фамилия, Имя, Класс, Скорость чтения (int, 1 кл.) /
+Баллы за контрольную по математике (от 1 до 10, float, 2-3 кл.) /
+Баллы за итоговую аттестацию (от 1 до 100, float, 4 кл.))
+вывод: содержимое файла в виде таблицы
+"""
 
 import numbers
 import struct
 
 
+# Класс для представления ученика
 class Student:
     def __init__(self, lastname: str, name: str, grade: int) -> None:
         self.lastname = lastname
@@ -18,6 +21,7 @@ class Student:
         return f"{self.lastname:<15} {self.name:<12} {self.grade:<6}"
 
 
+# Класс для ученика 1 класса
 class FirstGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: int) -> None:
         super().__init__(lastname=lastname, name=name, grade=grade)
@@ -30,6 +34,7 @@ class FirstGradeStudent(Student):
         )
 
 
+# Класс для ученика 2 или 3 класса
 class SecondOrThirdGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: float) -> None:
         super().__init__(lastname=lastname, name=name, grade=grade)
@@ -42,6 +47,7 @@ class SecondOrThirdGradeStudent(Student):
         )
 
 
+# Класс для ученика 4 класса
 class FourthGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: float) -> None:
         super().__init__(lastname=lastname, name=name, grade=grade)
@@ -54,6 +60,7 @@ class FourthGradeStudent(Student):
         )
 
 
+# Функция для проверки корректности числа
 def input_number(
         prompt: str = "Введите число: ",
         min_val: numbers = int,
@@ -70,6 +77,7 @@ def input_number(
             print("Error: Invalid input. Expected number.")
 
 
+# Функция для ввода данных ученика
 def input_student():
     lastname = input("      Фамилия: ")
     name = input("      Имя: ")
@@ -108,6 +116,7 @@ def input_student():
         return FourthGradeStudent(lastname, name, grade, mark)
 
 
+# Фукция для записи данных в бинарный файл
 def write_bin(file: str, data: list):
     with open(file, "ab") as f:
         for student in data:
@@ -127,6 +136,7 @@ def write_bin(file: str, data: list):
                 f.write(struct.pack('f', student.mark))
 
 
+# Функция для чтения данных из бинарного файла
 def read_bin(file: str) -> list:
     with open(file, "rb") as f:
         data = []
@@ -174,9 +184,6 @@ def main():
 
     write_bin(file="students.bin", data=students)
 
-
-if __name__ == "__main__":
-    main()
     print(
         f"\nОбновленная база данных:\n"
         f"{"Фамилия":<15} {"Имя":<12} {"Класс":<6} {"Скорость чтения":<20}"
@@ -188,3 +195,5 @@ if __name__ == "__main__":
     for student in data:
         print(student)
         
+if __name__ == "__main__":
+    main()

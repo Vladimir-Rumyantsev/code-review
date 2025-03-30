@@ -6,58 +6,56 @@ File55. Дана строка S0, целое число N (≤ 4) и N файл�
 """
 
 
-def create_test_file(filename: str, data) -> None:
-    with open(filename, "wb") as f:
-        f.writelines(data)
+import random
 
 
-def read_binary_file(filename: str) -> list:
-    with open(filename, "rb") as f:
-        return f.readlines()
+def generate_input_files(num_files: int) -> None:
+    """
+    Создает N бинарных файлов с именами S1.bin, S2.bin, ..., SN.bin.
+    Каждый файл содержит случайное количество чисел (1-5) от 0 до 9.
+    """
+    for file_number in range(1, num_files + 1):
+        elements_count = random.randint(1, 5)
+        data = [f"{random.randint(0, 9)}\n".encode() for _ in range(elements_count)]
+        with open(f"S{file_number}.bin", "wb") as file:
+            file.writelines(data)
 
 
-def sozdati(S0: str, a: int) -> None:
-    b = a + 1
-    for i in range(1, b):
-        mas = [
-            b"1\n", b"2\n", b"3\n",
-            b"4\n", b"5\n", b"6\n",
-            b"7\n", b"8\n", b"9\n",
-            b"10\n"
-        ]
-        nazw = S0 + str(i) + ".bin"
-        create_test_file(filename=nazw, data=mas)
+def merge_files_to_archive(output_filename: str, num_files: int) -> None:
+    """
+    Объединяет N файлов (S1.bin, S2.bin, ..., SN.bin) в архив <output_filename>.bin.
+    Формат архива: размер файла + его элементы для каждого файла.
+    """
+    with open(f"{output_filename}.bin", "wb") as archive:
+        for file_number in range(1, num_files + 1):
+            # Читаем данные текущего файла
+            with open(f"S{file_number}.bin", "rb") as file:
+                elements = file.readlines()
 
+            # Записываем размер файла как текстовую строку в байтах
+            archive.write(f"{len(elements)}\n".encode('utf-8'))
 
-def otw(S0: str, a: int) -> None:
-    b = a + 1
-    m = []
-    file_sizes = []
-    for i in range(1, b):
-        nazw = S0 + str(i) + ".bin"
-        a = read_binary_file(nazw)
-        for i in range(len(a)):
-            m.append(a[i])
-        file_sizes.append(len(a))
-
-    nazw = S0 + "0" + ".bin"
-    for i in range(len(file_sizes)):
-        zap = bytes(str(file_sizes[i]), encoding="utf-8")
-        zap += b"\n"
-        for j in range(file_sizes[i]):
-            zap += m[j]
-            m = m[file_sizes[i]:]
-        create_test_file(filename=nazw, data=zap)
+            # Записываем сами элементы
+            archive.writelines(elements)
 
 
 def main():
-    S0 = str(input("Введите строку S0: "))
-    try:
-        a = int(input("Введите число исходных файлов: "))
-        sozdati(S0=S0, a=a)
-        otw(S0=S0, a=a)
-    except ValueError as e:
-        print(f"Error: {e}")
+    S0: str = input("Введите имя выходного файла (S0): ")
+
+    while True:
+        try:
+            n: int = int(input("Введите N (1 <= N <= 4): "))
+            if 1 <= n <= 4:
+                break
+            print("Error: N must be between 1 and 4.")
+        except ValueError:
+            print("Error: Invalid input. Expected integer.")
+
+    generate_input_files(num_files = n)  # Создает S1.bin, S2.bin, ..., SN.bin
+    merge_files_to_archive(
+        output_filename = S0,
+        num_files = n
+    )  # Читает S1-SN.bin и пишет результат в <S0>.bin
 
 
 if __name__ == "__main__":

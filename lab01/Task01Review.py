@@ -60,7 +60,7 @@ def duplicate_odd_indexed_elements(input_filename, output_filename):
         return None, None
 
 
-if __name__ == "__main__":
+def main() -> None:
 
     # Пример использования:
     input_file = "celyy.bin"
@@ -74,3 +74,7 @@ if __name__ == "__main__":
     if original_string and processed_string:
         print(f"Содержимое исходного файла в виде строки: {original_string}")
         print(f"Содержимое обработанного файла в виде строки: {processed_string}")
+
+
+if __name__ == "__main__":
+    main()
