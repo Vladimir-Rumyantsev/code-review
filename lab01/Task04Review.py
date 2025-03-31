@@ -10,7 +10,6 @@ import numbers
 import struct
 
 
-# Класс для представления ученика
 class Student:
     def __init__(self, lastname: str, name: str, grade: int) -> None:
         self.lastname = lastname
@@ -21,7 +20,6 @@ class Student:
         return f"{self.lastname:<15} {self.name:<12} {self.grade:<6}"
 
 
-# Класс для ученика 1 класса
 class FirstGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: int) -> None:
 
@@ -38,7 +36,6 @@ class FirstGradeStudent(Student):
         )
 
 
-# Класс для ученика 2 или 3 класса
 class SecondOrThirdGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: float) -> None:
 
@@ -55,7 +52,6 @@ class SecondOrThirdGradeStudent(Student):
         )
 
 
-# Класс для ученика 4 класса
 class FourthGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: float) -> None:
 
@@ -72,7 +68,6 @@ class FourthGradeStudent(Student):
         )
 
 
-# Функция для проверки корректности числа
 def input_number(
         prompt: str = "Введите число: ",
         min_val: numbers = 0,
@@ -89,7 +84,6 @@ def input_number(
             print("Error: Invalid input. Expected number.")
 
 
-# Функция для ввода данных ученика
 def input_student():
     lastname = input("Фамилия: ")
     name = input("Имя: ")
@@ -128,7 +122,6 @@ def input_student():
         return FourthGradeStudent(lastname, name, grade, mark)
 
 
-# Фукция для записи данных в бинарный файл
 def write_bin(file_path: str, data: list):
     with open(file_path, "ab") as f:
         for student in data:
@@ -148,7 +141,6 @@ def write_bin(file_path: str, data: list):
                 f.write(struct.pack('f', student.mark))
 
 
-# Функция для чтения данных из бинарного файла
 def read_bin(file: str) -> list:
     with open(file, "rb") as f:
         data = []
@@ -196,7 +188,6 @@ def main():
 
     write_bin(file_path="3lab15.bin", data=students)
 
-    # Вывод таблицы
     header = (
         f"{'Фамилия':<15} {'Имя':<12} {'Класс':<6} {'Скорость чтения':<20} "
         f"{'К/Р по математике':<20} {'Итоговая аттестация':<20}"
