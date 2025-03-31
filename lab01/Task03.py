@@ -40,4 +40,3 @@ def evaluate_expression(expr):
 
 a = str(input("Введите выражение\n"))
 print(evaluate_expression(a))
-

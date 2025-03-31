@@ -24,6 +24,10 @@ class Student:
 # Класс для ученика 1 класса
 class FirstGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: int) -> None:
+
+        if grade != 1:
+            raise ValueError("Grade must be 1 for FirstGradeStudent.")
+
         super().__init__(lastname=lastname, name=name, grade=grade)
         self.mark = mark
 
@@ -37,6 +41,10 @@ class FirstGradeStudent(Student):
 # Класс для ученика 2 или 3 класса
 class SecondOrThirdGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: float) -> None:
+
+        if grade not in [2, 3]:
+            raise ValueError("Grade must be 2 or 3 for SecondOrThirdGradeStudent.")
+
         super().__init__(lastname=lastname, name=name, grade=grade)
         self.mark = mark
 
@@ -50,6 +58,10 @@ class SecondOrThirdGradeStudent(Student):
 # Класс для ученика 4 класса
 class FourthGradeStudent(Student):
     def __init__(self, lastname: str, name: str, grade: int, mark: float) -> None:
+
+        if grade != 4:
+            raise ValueError("Grade must be 4 for FourthGradeStudent.")
+
         super().__init__(lastname=lastname, name=name, grade=grade)
         self.mark = mark
 
@@ -63,8 +75,8 @@ class FourthGradeStudent(Student):
 # Функция для проверки корректности числа
 def input_number(
         prompt: str = "Введите число: ",
-        min_val: numbers = int,
-        max_val: numbers = int,
+        min_val: numbers = 0,
+        max_val: numbers = float("inf"),
         data_type: numbers = int
 ) -> numbers:
     while True:
@@ -79,10 +91,10 @@ def input_number(
 
 # Функция для ввода данных ученика
 def input_student():
-    lastname = input("      Фамилия: ")
-    name = input("      Имя: ")
+    lastname = input("Фамилия: ")
+    name = input("Имя: ")
     grade = input_number(
-        prompt="      Класс (1-4): ",
+        prompt="Класс (1-4): ",
         min_val=1,
         max_val=4,
         data_type=int
@@ -90,7 +102,7 @@ def input_student():
 
     if grade == 1:
         mark = input_number(
-            prompt="      Скорость чтения (кол-во слов/мин): ",
+            prompt="Скорость чтения (кол-во слов/мин): ",
             min_val=0,
             max_val=float("inf"),
             data_type=int
@@ -99,7 +111,7 @@ def input_student():
 
     elif 2 <= grade <= 3:
         mark = input_number(
-            prompt="      Оценка от 1 до 10 за итоговую школьную аттестацию: ",
+            prompt="Оценка от 1 до 10 за итоговую школьную аттестацию: ",
             min_val=1,
             max_val=10,
             data_type=float
@@ -108,7 +120,7 @@ def input_student():
 
     elif grade == 4:
         mark = input_number(
-            prompt="      Баллы от 1 до 100 за итоговую аттестацию: ",
+            prompt="Баллы от 1 до 100 за итоговую аттестацию: ",
             min_val=1,
             max_val=100,
             data_type=float
@@ -117,8 +129,8 @@ def input_student():
 
 
 # Фукция для записи данных в бинарный файл
-def write_bin(file: str, data: list):
-    with open(file, "ab") as f:
+def write_bin(file_path: str, data: list):
+    with open(file_path, "ab") as f:
         for student in data:
             lastname_encoded = student.lastname.encode("utf-8")
             f.write(struct.pack('i', len(lastname_encoded)))
@@ -182,18 +194,20 @@ def main():
         student = input_student()
         students.append(student)
 
-    write_bin(file="students.bin", data=students)
+    write_bin(file_path="3lab15.bin", data=students)
 
-    print(
-        f"\nОбновленная база данных:\n"
-        f"{"Фамилия":<15} {"Имя":<12} {"Класс":<6} {"Скорость чтения":<20}"
-        f"{"К/Р по математике":<20} {"Итоговая аттестация":<20}"
+    # Вывод таблицы
+    header = (
+        f"{'Фамилия':<15} {'Имя':<12} {'Класс':<6} {'Скорость чтения':<20} "
+        f"{'К/Р по математике':<20} {'Итоговая аттестация':<20}"
     )
-    print('-' * 100)
+    print(f"\nОбновленная база данных:\n" + header)
+    print("-" * 100)
 
     data = read_bin(file="3lab15.bin")
     for student in data:
         print(student)
-        
+
+
 if __name__ == "__main__":
     main()

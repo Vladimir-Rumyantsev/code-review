@@ -1,4 +1,8 @@
-# Дан бинарный файл целых чисел. Продублировать в нем все элементы с нечетными номерами.
+"""
+Дан бинарный файл целых чисел. Продублировать в нем все элементы с нечетными номерами.
+"""
+
+
 import struct
 
 
@@ -16,7 +20,7 @@ def read_binary_file(filename):
                 numbers.append(number)
         return numbers
     except FileNotFoundError:
-        print(f"Error: File {filename} not found.")
+        print(f"\nError: File {filename} not found.")
         return None
 
 
@@ -63,8 +67,8 @@ def duplicate_odd_indexed_elements(input_filename, output_filename):
 def main() -> None:
 
     # Пример использования:
-    input_file = "celyy.bin"
-    output_file = "celyy2.bin"
+    input_file = "input.bin"
+    output_file = "output.bin"
 
     original_string, processed_string = duplicate_odd_indexed_elements(
         input_filename=input_file,
