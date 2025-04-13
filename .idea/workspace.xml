@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbe2c7be-f47f-480a-b45f-7e19db83d58d" name="Changes" comment="Update 03/31/2025">
-      <change beforePath="$PROJECT_DIR$/lab01/Task04Review.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab01/Task04Review.py" afterDir="false" />
+    <list default="true" id="fbe2c7be-f47f-480a-b45f-7e19db83d58d" name="Changes" comment="lab1 (Lab Work 1) completed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,15 +24,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Task02Review.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Task04Review.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Task01Review.executor": "Run",
+    "Python.Task02Review.executor": "Run",
+    "Python.Task04Review.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master"
   }
-}</component>
-  <component name="RunManager" selected="Python.Task04Review">
+}]]></component>
+  <component name="RunManager" selected="Python.Task01Review">
+    <configuration name="Task01Review" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="codeReview" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab02" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab02/Task01Review.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Task02Review" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="codeReview" />
       <option name="ENV_FILES" value="" />
@@ -79,8 +102,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Task04Review" />
+        <item itemvalue="Python.Task01Review" />
         <item itemvalue="Python.Task02Review" />
+        <item itemvalue="Python.Task04Review" />
       </list>
     </recent_temporary>
   </component>
@@ -140,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743404095494</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="lab1 (Lab Work 1) completed">
+      <option name="closed" value="true" />
+      <created>1743404903180</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743404903180</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +192,7 @@
     <MESSAGE value="Semi-finished work 2" />
     <MESSAGE value="Reworked task 2" />
     <MESSAGE value="Update 03/31/2025" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update 03/31/2025" />
+    <MESSAGE value="lab1 (Lab Work 1) completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab1 (Lab Work 1) completed" />
   </component>
 </project>
