@@ -1,20 +1,35 @@
-#Даны две очереди; начало и конец первой равны A1 и A2, а второй — A3 и A4(если очередь является пустой,
-#то соответствующие объекты равны null). Переместить все элементы первой очереди (в порядке от начала к концу)в конец
-#второй очереди и вывести ссылки на начало и конец преобразованной второй очереди. Новые объекты типа Node не создавать.
+"""
+Даны две очереди; начало и конец первой равны A1 и A2, а второй — A3 и A4
+(если очередь является пустой, то соответствующие объекты равны null).
+Переместить все элементы первой очереди (в порядке от начала к концу) в конец второй очереди
+и вывести ссылки на начало и конец преобразованной второй очереди.
+Новые объекты типа Node не создавать.
+"""
+
+import numbers
+
+
 class Node:
-    def __init__(self, data):
+    def __init__(self, data: object, next=None) -> None:
         self.data = data
-        self.next = None
+        self.next = next
+
+    def __str__(self) -> str:
+        return str(self.data)
+
+    def str_link(self) -> str:
+        return super().__str__()
+
 
 class Queue:
-    def __init__(self):
+    def __init__(self) -> None:
         self.head = None
         self.tail = None
 
-    def is_empty(self): # Проверка на пустую очередь
+    def is_empty(self) -> bool:
         return self.head is None
 
-    def enqueue(self, data): # Добавление элемента в конец очереди
+    def add(self, data: object) -> None:
         new_node = Node(data)
 
         if self.is_empty():
@@ -24,73 +39,104 @@ class Queue:
             self.tail.next = new_node
             self.tail = new_node
 
-    def dequeue(self): # Удаление из начала очереди
+    def pop(self) -> object:
         if self.is_empty():
-            raise IndexError("Очередь пуста")
+            raise IndexError("Error: The queue is empty!")
 
         removed_node = self.head
-        self.head = self.head.next  # Перемещаем указатель head на следующий узел
-
-        if self.head is None:
+        if self.head is self.tail:
+            self.head = None
             self.tail = None
+        else:
+            self.head = self.head.next
 
         return removed_node.data
 
-    def print_queue(self):
+    def extend(self, queue: 'Queue') -> None:
+        if queue.is_empty():
+            return
+
+        if self.is_empty():
+            self.head = queue.head
+        else:
+            self.tail.next = queue.head
+        self.tail = queue.tail
+        queue.head = None
+        queue.tail = None
+
+    def str_head_link(self) -> str:
+        if self.is_empty():
+            return "The queue is empty."
+        return self.head.str_link()
+
+    def str_tail_link(self) -> str:
+        if self.is_empty():
+            return "The queue is empty."
+        return self.tail.str_link()
+
+    def __str__(self) -> str:
+        line = ''
         current = self.head
         while current:
-            print(current.data, end=" ")
+            line += f", {current}"
             current = current.next
-        print()
+        return f"[{line[2:]}]"
 
-# Создаем две очереди
-queue1 = Queue()
-queue2 = Queue()
 
-num_elements1 = int(input("Введите количество элементов для первой очереди: "))
-for i in range(num_elements1):
-    data = input(f"Введите элемент {i+1} для первой очереди: ")
-    queue1.enqueue(data)
+def input_number(
+        prompt: str = "Введите число: ",
+        min_val: numbers = 0,
+        max_val: numbers = float("inf"),
+        data_type: type = int
+) -> numbers:
+    while True:
+        try:
+            value = data_type(input(prompt))
+            if min_val <= value <= max_val:
+                return value
+            print(f"Error: Value must be between {min_val} and {max_val}")
+        except ValueError:
+            print("Error: Invalid input. Expected number.")
 
-num_elements2 = int(input("Введите количество элементов для второй очереди: "))
-for i in range(num_elements2):
-    data = input(f"Введите элемент {i+1} для второй очереди: ")
-    queue2.enqueue(data)
 
-print("Первая очередь до перемещения:")
-queue1.print_queue()
-print("Вторая очередь до перемещения:")
-queue2.print_queue()
+def main():
+    queue1 = Queue()
+    queue2 = Queue()
 
-# начало и конец первой очереди
-A1 = queue1.head
-A2 = queue1.tail
-# начало и конец второй очереди
-A3 = queue2.head
-A4 = queue2.tail
+    queue1_size = input_number(
+        prompt="\nВведите количество элементов для первой очереди (не больше 10): ",
+        min_val=0,
+        max_val=10,
+        data_type=int
+    )
+    for i in range(queue1_size):
+        data = input(f"Введите элемент {i+1} для первой очереди: ")
+        queue1.add(data=data)
 
-# Перемещаем элементы из первой очереди во вторую
-if not queue1.is_empty():
-    if queue2.is_empty():
-        queue2.head = A1
-        queue2.tail = A2
-    else: # Если вторая очередь не пуста
-        A4.next = A1
-        queue2.tail = A2
-    queue1.head = None
-    queue1.tail = None
-else:
-    print("Первая очередь пуста, перемещать нечего")
+    queue2_size = input_number(
+        prompt="\nВведите количество элементов для второй очереди (не больше 10): ",
+        min_val=0,
+        max_val=10,
+        data_type=int
+    )
+    for i in range(queue2_size):
+        data = input(f"Введите элемент {i+1} для второй очереди: ")
+        queue2.add(data=data)
 
-print("Вторая очередь после перемещения:")
-queue2.print_queue()
-if queue2.head:
-    print("Новое начало второй очереди:", queue2.head.data)
-    print("Ссылка на начало второй очереди:", queue2.head)
-else:
-    print("Вторая очередь пуста")
-if queue2.tail:
-    print("Новый конец второй очереди:", queue2.tail.data)
-    print("Ссылка на конец второй очереди:",queue2.tail)
-else:
-    print("Вторая очередь пуста")
+    print(
+        f"\nПервая очередь до перемещения: {queue1}"
+        f"\nВторая очередь до перемещения: {queue2}"
+    )
+
+    queue2.extend(queue1)
+
+    print(
+        f"\nПервая очередь после перемещения: {queue1}"
+        f"\nВторая очередь после перемещения: {queue2}\n"
+        f"\nСсылка на начало второй очереди: {queue2.str_head_link()}"
+        f"\nСсылка на конец второй очереди:  {queue2.str_tail_link()}"
+    )
+
+
+if __name__ == "__main__":
+    main()
