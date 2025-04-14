@@ -43,7 +43,7 @@ class Queue:
         if self.is_empty():
             raise IndexError("Error: The queue is empty!")
 
-        removed_node = self.head
+        removed_node: Node = self.head
         if self.head is self.tail:
             self.head = None
             self.tail = None
@@ -75,8 +75,8 @@ class Queue:
         return self.tail.str_link()
 
     def __str__(self) -> str:
-        line = ''
-        current = self.head
+        line: str = ''
+        current: Node = self.head
         while current:
             line += f", {current}"
             current = current.next
@@ -103,24 +103,24 @@ def main():
     queue1 = Queue()
     queue2 = Queue()
 
-    queue1_size = input_number(
+    queue1_size: int = input_number(
         prompt="\nВведите количество элементов для первой очереди (не больше 10): ",
         min_val=0,
         max_val=10,
         data_type=int
     )
     for i in range(queue1_size):
-        data = input(f"Введите элемент {i+1} для первой очереди: ")
+        data: str = input(f"Введите элемент {i+1} для первой очереди: ")
         queue1.add(data=data)
 
-    queue2_size = input_number(
+    queue2_size: int = input_number(
         prompt="\nВведите количество элементов для второй очереди (не больше 10): ",
         min_val=0,
         max_val=10,
         data_type=int
     )
     for i in range(queue2_size):
-        data = input(f"Введите элемент {i+1} для второй очереди: ")
+        data: str = input(f"Введите элемент {i+1} для второй очереди: ")
         queue2.add(data=data)
 
     print(

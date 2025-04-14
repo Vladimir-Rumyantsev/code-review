@@ -40,10 +40,10 @@ def concatenate_lists(A1, A2, A0):
 
     # Обновляем связи элементов
     if A0.Prev is not None:
-        A0.Prev.Next = A1  # Предыдущий элемент A0 теперь указывает на начало A1
+        A0.Prev.next = A1  # Предыдущий элемент A0 теперь указывает на начало A1
     A1.Prev = A0.Prev  # Предыдущий для A1 - Предыдущий для A0
     A0.Prev = A2  # Предыдущий для A0 теперь A1_last
-    A2.Next = A0  # Последний элемент первого списка теперь указывает на A0
+    A2.next = A0  # Последний элемент первого списка теперь указывает на A0
 
     #Определяем первый и последний элементы объединенного списка
     first_node = A1 if A1.Prev is None else find_first(A0)
@@ -97,23 +97,23 @@ A0 = B1
 if B1:
     current = B1
     for _ in range(random.randint(0, size2 - 1)): #random.randint(0, size2 - 1) генерирует случайный индекс для элемента A0
-        if current.Next:
-            current = current.Next
+        if current.next:
+            current = current.next
     A0 = current
 
 
 print("Первый список:")
 current = A1
 while current:
-    print(current.Data, end=" ")
-    current = current.Next
+    print(current.data, end=" ")
+    current = current.next
 print()
 
 print("Второй список:")
 current = B1
 while current:
-    print(current.Data, end=" ")
-    current = current.Next
+    print(current.data, end=" ")
+    current = current.next
 print()
 
 # Объединяем списки
@@ -122,9 +122,9 @@ first_node, last_node = concatenate_lists(A1, A2, A0)
 print("\nОбъединенный список:")
 current = first_node
 while current:
-    print(current.Data, end=" ")
-    current = current.Next
+    print(current.data, end=" ")
+    current = current.next
 print()
 
-print("\nНачало объединенного списка:", first_node.Data if first_node else "None")
-print("Конец объединенного списка:", last_node.Data if last_node else "None")
+print("\nНачало объединенного списка:", first_node.data if first_node else "None")
+print("Конец объединенного списка:", last_node.data if last_node else "None")

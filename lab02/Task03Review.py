@@ -25,8 +25,8 @@ class LinkedList:
         self.tail = None
 
     def __str__(self) -> str:
-        line = ''
-        current = self.head
+        line: str = ''
+        current: Node = self.head
         while current:
             line += f", {current}"
             current = current.next
@@ -45,7 +45,7 @@ class LinkedList:
             return "The queue is empty."
         return self.tail.str_link()
 
-    def push(self, data):
+    def push(self, data: object) -> None:
         new_node = Node(data)
 
         if self.is_empty():
@@ -55,7 +55,7 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
 
-    def add(self, data):
+    def add(self, data: object) -> None:
         new_node = Node(data)
 
         if self.is_empty():
@@ -66,21 +66,21 @@ class LinkedList:
             self.tail = new_node
 
     def length(self) -> int:
-        count = 0
-        current = self.head
+        count: int = 0
+        current: Node = self.head
         while current:
             count += 1
             current = current.next
         return count
 
-    def pop(self, index: int = -1):
+    def pop(self, index: int = -1) -> object:
         length: int = self.length()
         if index < 0:
             index += length
         if index < 0 or index >= length:
             raise IndexError("Index out of range.")
 
-        current = self.head
+        current: Node = self.head
 
         if length == 1:
             self.head = None
@@ -91,13 +91,13 @@ class LinkedList:
             self.head = current.next
             return current.data
 
-        for _ in range(index-1):
+        for _ in range(index - 1):
             current = current.next
 
         if index == length - 1:
             self.tail = current
 
-        data = current.next.data
+        data: object = current.next.data
         current.next = current.next.next
         return data
 
@@ -112,7 +112,7 @@ class LinkedList:
         if index == length - 1:
             return self.tail
 
-        current = self.head
+        current: Node = self.head
         for _ in range(index):
             current = current.next
         return current
@@ -134,7 +134,7 @@ def input_number(
             print("Error: Invalid input. Expected number.")
 
 
-def main():
+def main() -> None:
     linked_list = LinkedList()
     list_size = input_number(
         prompt="\nВведите количество элементов для листа (не больше 20): ",
