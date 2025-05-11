@@ -6,6 +6,7 @@ A1 и A2 — начало и конец первого списка, A0 — од
 объединенного списка. Новые объекты типа Node не создавать.
 """
 
+import numbers
 import random
 
 
@@ -14,6 +15,65 @@ class Node:
         self.data = data
         self.prev = prev_node
         self.next = next_node
+
+
+class LinkedList:
+    def __init__(self) -> None:
+        self.head = None
+        self.tail = None
+
+    def __str__(self) -> str:
+        line: str = ''
+        current: Node = self.head
+        while current:
+            line += f", {current}"
+            current = current.next
+        return f"[{line[2:]}]"
+
+    def is_empty(self) -> bool:
+        return self.head is None
+
+    def str_head_link(self) -> str:
+        if self.is_empty():
+            return "The queue is empty."
+        return self.head.str_link()
+
+    def str_tail_link(self) -> str:
+        if self.is_empty():
+            return "The queue is empty."
+        return self.tail.str_link()
+
+    def head_link(self) -> Node:
+        if not self.is_empty():
+            return self.head
+
+    def tail_link(self) -> Node:
+        if not self.is_empty():
+            return self.tail
+
+    def length(self) -> int:
+        count: int = 0
+        current: Node = self.head
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+
+def input_number(
+        prompt: str = "Введите число: ",
+        min_val: numbers = 0,
+        max_val: numbers = float("inf"),
+        data_type: type = int
+) -> numbers:
+    while True:
+        try:
+            value = data_type(input(prompt))
+            if min_val <= value <= max_val:
+                return value
+            print(f"Error: Value must be between {min_val} and {max_val}")
+        except ValueError:
+            print("Error: Invalid input. Expected number.")
 
 
 def concatenate_lists(A1, A2, A0):

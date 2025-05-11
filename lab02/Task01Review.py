@@ -23,7 +23,7 @@ class Stack:
     def is_empty(self) -> bool:
         return self.head is None
 
-    def push(self, data) -> None:
+    def push(self, data: object) -> None:
         if self.is_empty():
             self.head = Node(data)
         else:
@@ -35,7 +35,7 @@ class Stack:
         if self.is_empty():
             raise IndexError("Error: The stack is empty!")
 
-        popped_node = self.head
+        popped_node: Node = self.head
         self.head = self.head.next
         popped_node.next = None
         return popped_node.data
@@ -51,8 +51,8 @@ class Stack:
         return self.head.str_link()
 
     def __str__(self) -> str:
-        line = ''
-        current = self.head
+        line: str = ''
+        current: Node = self.head
         while current:
             line += f", {current}"
             current = current.next
